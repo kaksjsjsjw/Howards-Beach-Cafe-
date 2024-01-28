@@ -1,0 +1,39 @@
+local dss = game:GetService("DataStoreService")
+local datastore = dss:GetDataStore("WPS")
+game.Players.PlayerAdded:Connect(function(plr)
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Name = "leaderstats"
+	leaderstats.Parent = plr
+	local WorkPoints = Instance.new("IntValue")
+	WorkPoints.Name = "WorkPoints"
+	WorkPoints.Parent = leaderstats
+	local success,errormsg = pcall(function()
+		WorkPoints.Value = datastore:GetAsync(plr.UserId)
+	end)
+	if success then
+		print("loaded data correctly")
+	else
+		warn(errormsg)
+	end
+	while true do
+		wait(120)
+		local success,errormsg = pcall(function()
+			datastore:SetAsync(plr.UserId, plr.leadertats.WorkPoints.Value)
+		end)
+		if success then
+			print("autosaved data correctly")
+		else
+			warn(errormsg)
+		end
+	end
+end)
+game.Players.PlayerRemoving:Connect(function(plr)
+	local success,errormsg = pcall(function()
+		datastore:SetAsync(plr.UserId, plr.leaderstats.WorkPoints.Value)
+	end)
+	if success then
+		print("saved data correctly")
+	else
+		warn(errormsg)
+	end
+end)
