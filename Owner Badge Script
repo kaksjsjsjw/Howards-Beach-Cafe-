@@ -3,7 +3,7 @@ local OwnerId = ID
 local BadgeId =  ID
 local function giveBadge()
 	
-	for _,player in pairs(game.Players:GetPlayers()) do
+	for _, player in pairs(game.Players:GetPlayers()) do
 		if BadgeService:UserHasBadgeAsync(player.UserId,BadgeId) then
 			BadgeService:AwardBadge(player.UserId,BadgeId)
 		end
