@@ -1,0 +1,17 @@
+local passid = ID
+local mps = game:GetService("MarketplaceService")
+game.Players.PlayerAdded:Connect(function(plr)
+plr.CharacterAdded:Connect(function(char)
+plr.Chatted:Connect(function(msg)
+local message = msg.lower(msg)
+if message == "!ws on" then
+if mps:UserOwnsGamePassAsync(plr.UserId, passid) then
+char:WaitForChild("Humanoid").WalkSpeed = 32
+end
+end
+if message == "!ws off" then
+char:WaitForChild("Humanoid").WalkSpeed = 16
+end
+end)
+end)
+end)
