@@ -1,0 +1,9 @@
+local blacklistedGroups = {IDs}
+local gs = game:GetService("GroupService")
+for _, groupId in pairs(blacklistedGroups) do
+local groupinfo = gs:GetGroupInfoAsync(groupId)
+if player:IsInGroup(groupId) then
+player:Kick("You are in the group " ..groupinfo.Name.. ", which is a blacklisted group.")
+end
+end
+end)
