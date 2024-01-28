@@ -1,4 +1,4 @@
-local PlayersBanned = {"Username"}
+local PlayersBanned = {"IDs"}
 local BanMessage = "You have been banned from this game!"
 
 game.Players.PlayerAdded:Connect(function(player)
