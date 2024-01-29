@@ -1,4 +1,4 @@
-local blacklistedGroups = {IDs}
+local blacklistedGroups = {33578684}
 local gs = game:GetService("GroupService")
 for _, groupId in pairs(blacklistedGroups) do
 local groupinfo = gs:GetGroupInfoAsync(groupId)
