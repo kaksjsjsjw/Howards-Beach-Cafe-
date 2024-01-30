@@ -11,7 +11,7 @@ end
 end
 if message == "!ws off" then
 char:WaitForChild("Humanoid").WalkSpeed = 16
-end
-end)
-end)
+      end
+   end)
+ end)
 end)
