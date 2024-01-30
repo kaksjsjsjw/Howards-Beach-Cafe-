@@ -1,9 +1,9 @@
 local Player = game.Players.LocalPlayer
 local doorPart = game.Workspace.Door.Door
-local groupId = ID
+local groupId = 33307892
 local minimumRank = rank
 
-if Player:GetRankInGroup(ID) >= rank then
+if Player:GetRankInGroup(ID) >= 6 then
 	print("Player is at or above minimum rank")
 	doorPart.CanCollide = false
 else
