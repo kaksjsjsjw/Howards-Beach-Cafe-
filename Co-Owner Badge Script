@@ -1,6 +1,6 @@
 local BadgeService = game:GetService("BadgeService")
-local CoOwnerId = ID
-local BadgeId =  ID
+local CoOwnerId = 283230337
+local BadgeId =  2153897290
 local function giveBadge()
 
 	for _,player in pairs(game.Players:GetPlayers()) do
