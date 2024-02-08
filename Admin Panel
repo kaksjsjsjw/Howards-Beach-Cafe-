@@ -1,0 +1,49 @@
+/* Credits to whoever made this */
+local RP = game:GetService("ReplicatedStorage")
+
+local AdminPanelEvents = RP.AdminPanel
+local KickEvent = AdminPanelEvents.Kick
+local KillEvent = AdminPanelEvents.Kill
+local StatsChangeEvent = AdminPanelEvents.StatsChange
+
+
+local Whitelist = {
+	
+}
+
+game.Players.PlayerAdded:Connect(function(Player)
+	for i,v in pairs(Whitelist) do
+		if Player.Name == v then
+			local Clone = script.AdminPanel:Clone()
+			Clone.Parent = Player.PlayerGui
+		end
+	end
+end)
+
+KickEvent.OnServerEvent:Connect(function(Player, User, Reason)
+	for i,v in pairs(Whitelist) do
+		if Player.Name == v then
+			if Reason == "" then
+				game.Players[User]:Kick("You've been kicked by an admin.")
+			else
+				game.Players[User]:Kick(Reason)
+			end
+		end
+	end
+end)
+
+KillEvent.OnServerEvent:Connect(function(Player, Target)
+	for i,v in pairs(Whitelist) do
+		if Player.Name == v then
+			game.Players[Target].Character.Humanoid.Health = 0
+		end
+	end
+end)
+
+StatsChangeEvent.OnServerEvent:Connect(function(Player, Target, Amount, StatName)
+	for i,v in pairs(Whitelist) do
+		if Player.Name == v then
+			game.Players[Target].leaderstats[StatName].Value = Amount
+		end
+	end
+end)
