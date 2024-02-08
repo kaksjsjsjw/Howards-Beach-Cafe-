@@ -1,0 +1,4 @@
+/* Credits to whoever made this */
+script.Parent.MouseButton1Click:Connect(function()
+	script.Parent.Parent.DonationFrame.Visible = not script.Parent.Parent.DonationFrame.Visible --open or close donationframe when clicked
+end)
