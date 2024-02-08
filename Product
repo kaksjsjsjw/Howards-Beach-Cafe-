@@ -1,0 +1,7 @@
+/* This changes for the others as well */
+local marketplaceservice = game:GetService("MarketplaceService")
+local ProductID = 1718239489
+
+script.Parent.MouseButton1Click:Connect(function()
+	marketplaceservice:PromptProductPurchase(game.Players.LocalPlayer, ProductID) --prompt purchase dialog when button is clicked
+end)
