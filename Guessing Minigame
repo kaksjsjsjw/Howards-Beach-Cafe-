@@ -1,0 +1,61 @@
+/* This is temporary this will be taken down when we remove the update */
+-- Require the Love2D framework
+local love = require("love")
+
+-- Define the variables
+local secretNumber
+local guess
+local message
+
+function love.load()
+	-- Initialize the game
+	secretNumber = math.random(1, 100)
+	guess = nil
+	message = "Guess a number between 1 and 100"
+end
+
+function love.draw()
+	-- Draw the message
+	love.graphics.print(message, 100, 100)
+end
+
+function love.keypressed(key)
+	-- Handle player input
+	if key == "return" then
+		-- Process the guess when Enter key is pressed
+		checkGuess()
+	end
+end
+
+function checkGuess()
+	-- Convert the guess to a number
+	guess = tonumber(guess)
+
+	-- Check if the guess is valid
+	if guess and guess >= 1 and guess <= 100 then
+		-- Compare the guess with the secret number
+		if guess < secretNumber then
+			message = "Too low! Guess again."
+		elseif guess > secretNumber then
+			message = "Too high! Guess again."
+		else
+			message = "Congratulations! You guessed the correct number."
+		end
+	else
+		message = "Invalid guess. Please enter a number between 1 and 100."
+	end
+
+	-- Clear the guess input for the next guess
+	guess = nil
+end
+
+function love.textinput(text)
+	-- Handle text input (for guessing)
+	if tonumber(text) then
+		if guess then
+			guess = guess .. text
+		else
+			guess = text
+		end
+	end
+end
